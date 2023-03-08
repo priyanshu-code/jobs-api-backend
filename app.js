@@ -1,7 +1,7 @@
 require('dotenv').config();
 require('express-async-errors');
 const helmet = require('helmet')
-const cors = require('cors')
+// const cors = require('cors')
 const xss = require('xss-clean')
 const rateLimiter = require('express-rate-limit')
 
@@ -25,14 +25,14 @@ app.use(rateLimiter({
 	standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
 	legacyHeaders: false, // Disable the `X-RateLimit-*` headers
 }));
-const corsOptions ={
-  origin:'https://job-tracker-9t75.onrender.com', 
-  credentials:true,            //access-control-allow-credentials:true
-  optionSuccessStatus:200
-}
+// const corsOptions ={
+//   origin:'https://job-tracker-9t75.onrender.com', 
+//   credentials:true,            //access-control-allow-credentials:true
+//   optionSuccessStatus:200
+// }
 app.use(express.json());
 app.use(helmet());
-app.use(cors(corsOptions));
+// app.use(cors());
 app.use(xss());
 // extra packages
 app.get('/',(req,res)=>{
